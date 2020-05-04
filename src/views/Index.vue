@@ -29,31 +29,32 @@
         </div>
       </div>
 
-      <div class="field has-addons">
-        <p class="control">
-          <button class="button is-primary">Display</button>
-        </p>
-        <p class="control">
-          <button class="button" type="button" @click="cgNext">Next</button>
-        </p>
-        <p class="control">
-          <button class="button is-danger" type="button" @click="questionHide">Hide</button>
-        </p>
+      <div class="buttons has-addons">
+        <button class="button is-primary">Display</button>
+        <button class="button" type="button" @click="cgNext">Next</button>
+        <button class="button is-danger" type="button" @click="questionHide">Hide</button>
       </div>
-      <button
-        v-for="(a, index) in answersArray"
-        :key="index"
-        class="button"
-        type="button"
-        :class="{'is-warning': a.selected}"
-        @click="selectAnswer(index)"
-        :disabled="a.hidden"
-      >
-        <b class="has-text-primary" style="margin-right:5px">{{ numberToLetter(index, true) }}:</b>
-        {{ a.text }}
-      </button>
-      <button class="button is-danger" type="button" @click="clearSelection">Clear selection</button>
-      <button class="button is-primary" type="button" @click="fiftyFifty">50/50</button>
+
+      <div class="buttons has-addons">
+        <button
+          v-for="(a, index) in answersArray"
+          :key="index"
+          class="button"
+          type="button"
+          :class="{'is-warning': a.selected}"
+          @click="selectAnswer(index)"
+          :disabled="a.hidden"
+        >
+          <b class="has-text-primary" style="margin-right:5px">{{ numberToLetter(index, true) }}:</b>
+          {{ a.text }}
+        </button>
+        <button class="button is-danger" type="button" @click="clearSelection">Clear selection</button>
+      </div>
+      <div class="buttons has-addons">
+        <button class="button" type="button" @click="fiftyFifty">50/50</button>
+        <button class="button" type="button">Ask the audience</button>
+        <button class="button" type="button">One more time</button>
+      </div>
     </form>
   </div>
 </template>
@@ -149,15 +150,18 @@ export default {
 
       this.questionUpdate();
     },
-    fiftyFifty(){
+    fiftyFifty() {
       var incorrectAnswers = this.answersArray.filter((item, index) => {
-        return this.numberToLetter(index, true) != this.correctAnswer
-      })
-      var itemsToHide = incorrectAnswers.slice().sort(() => 0.5 - Math.random()).slice(0, 2)
-      for(var i = 0; i < itemsToHide.length; i++){
-        itemsToHide[i].hidden = true
+        return this.numberToLetter(index, true) != this.correctAnswer;
+      });
+      var itemsToHide = incorrectAnswers
+        .slice()
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 2);
+      for (var i = 0; i < itemsToHide.length; i++) {
+        itemsToHide[i].hidden = true;
       }
-      this.questionUpdate()
+      this.questionUpdate();
     }
   },
   computed: {

@@ -16,7 +16,7 @@
     "css-loader": "^3.5.3",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",
-    "node-sass": "^4.14.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^8.0.2",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",

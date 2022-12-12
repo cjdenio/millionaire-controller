@@ -14,7 +14,7 @@
     "bulma": "^0.8.2",
     "casparcg-connection": "^4.9.0",
     "css-loader": "^3.5.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "file-loader": "^6.0.0",
     "node-sass": "^4.14.0",
     "sass-loader": "^8.0.2",
